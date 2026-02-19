@@ -6,17 +6,19 @@ terraform {
     }
   }
   required_version = ">= 1.0"
+
+  backend "s3" {
+    bucket = "tfstate-flask-lab"
+    key    = "flask-lab/terraform.tfstate"
+    region = "us-east-1"
+  }
 }
 
 provider "aws" {
   region = var.aws_region
 }
 
-backend "s3" {
-    bucket = "tfstate-flask-lab"
-    key    = "flask-lab/terraform.tfstate"
-    region = "us-east-1"
-  }
+
 
 
 # Fetch the latest Amazon Linux 2023 AMI
