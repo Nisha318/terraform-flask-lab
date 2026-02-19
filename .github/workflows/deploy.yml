@@ -94,6 +94,11 @@ jobs:
       - name: Tofu Init
         run: tofu init
 
+      - name: Write SSH public key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_PUBLIC_KEY }}" > ~/.ssh/id_rsa.pub
+          
       - name: Tofu Apply
         run: tofu apply -auto-approve
 
