@@ -12,13 +12,12 @@ provider "aws" {
   region = var.aws_region
 }
 
-terraform {
-  backend "s3" {
+backend "s3" {
     bucket = "tfstate-flask-lab"
     key    = "flask-lab/terraform.tfstate"
     region = "us-east-1"
   }
-}
+
 
 # Fetch the latest Amazon Linux 2023 AMI
 data "aws_ami" "amazon_linux" {
